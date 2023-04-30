@@ -3,12 +3,12 @@ const app = express();
 const port = process.env.PORT || 3001;
 const getColors = require('./helpers/get-colors');
 
-//app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req, res) => {
-
+    res.sendFile("index.html");
 });
 
 app.post('/generate', async (req, res) => {
