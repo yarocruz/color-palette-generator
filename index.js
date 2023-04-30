@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
+const path = require('path');
 const getColors = require('./helpers/get-colors');
 
 app.use(express.static('public'));
@@ -8,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req, res) => {
-    res.sendFile("index.html");
+    res.sendFile(path.join(__dirname + '/public/'));
 });
 
 app.post('/generate', async (req, res) => {
